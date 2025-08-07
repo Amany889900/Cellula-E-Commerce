@@ -1,0 +1,36 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { Button } from "flowbite-react";
+import MainLayout from './Components/MainLayout/MainLayout';
+import Login from './Components/Login/Login';
+import SignUp from './Components/SignUp/SignUp';
+import Error from './Components/Error/Error';
+import {createHashRouter, RouterProvider } from 'react-router-dom'
+import Home from './Components/Home/Home';
+import Contact from './Components/Contact/Contact';
+import About from './Components/About/About';
+
+
+function App() {
+    
+    const router = createHashRouter([
+    {path:"",element:<MainLayout/>,children:[
+      {path:"/login",element:<Login/>},
+      {path:"/signup",element:<SignUp/>},
+      {path:"/home",element:<Home/>},
+      {path:"/contact",element:<Contact/>},
+      {path:"/about",element:<About/>},
+      {path:"*",element:<Error/>},
+    ]
+    }
+   ])
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  )
+}
+
+export default App
