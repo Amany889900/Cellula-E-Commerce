@@ -11,6 +11,13 @@ import joyStick from "./../../assets/Images/joyStick.png"
 import keyboard from "./../../assets/Images/keyboard.png"
 import monitor from "./../../assets/Images/monitor.png"
 import chair from "./../../assets/Images/chair.png"
+import jacket from "./../../assets/Images/jacket.png"
+import bag from "./../../assets/Images/bag.png"
+import cpuCooler from "./../../assets/Images/cpuCooler.png"
+import bookShelf from "./../../assets/Images/bookShelf.png"
+import iPhone from "./../../assets/Images/iPhone.png"
+import { dateValue } from './../../../node_modules/flowbite-datepicker/js/lib/date';
+import { NavLink } from 'react-router-dom';
 
 
 const categories = [
@@ -42,15 +49,95 @@ const sales=[
   {image:joyStick,title:"HAVIT HV-G92 Gamepad",oPrice:"$224",nPrice:"$120",sale:"-40%",rate:"(88)"},
 ]
 
+const bestSelling =[
+  {image:jacket,title:"The north coat",oPrice:"$360",nPrice:"$260",rate:"(65)"},
+  {image:bag,title:"Gucci duffle bag",oPrice:"$1160",nPrice:"$960",rate:"(65)"},
+  {image:cpuCooler,title:"RGB liquid CPU Cooler",oPrice:"$160",nPrice:"$170",rate:"(65)"},
+  {image:bookShelf,title:"Small BookSelf",nPrice:"$360",rate:"(88)"},
+]
+
 function Home() {
  const swiperRef = useRef(null); 
  const swiperRef2 = useRef(null); 
   return (
 
   <>
+
+  <div className="w-[80%] m-auto mt-28 ">
+    <div className="flex gap-3 w-full">
+      <ul className="w-1/4 border-r-1">
+       <li className="mt-10 text-[16px] leading-[24px] font-normal mb-[16px]">Woman's Fashion</li>
+       <li  className="text-[16px] leading-[24px] font-normal mb-[16px]">Mens's Fashion</li>
+       <li className="text-[16px] leading-[24px] font-normal mb-[16px]">Electronics</li>
+       <li className="text-[16px] leading-[24px] font-normal mb-[16px]">Home & Lifestyle</li>
+       <li className="text-[16px] leading-[24px] font-normal mb-[16px]">Medicine</li>
+       <li className="text-[16px] leading-[24px] font-normal mb-[16px]">Sport's & Outdoor</li>
+       <li className="text-[16px] leading-[24px] font-normal mb-[16px]">Baby's & Toys</li>
+       <li className="text-[16px] leading-[24px] font-normal mb-[16px]">Groceries & Pets</li>
+       <li className="text-[16px] leading-[24px] font-normal mb-[16px]">Health & Beauty</li>
+      </ul>
+      <div className="w-3/4 p-5 self-center">
+      <Swiper
+  modules={[Pagination]}
+  pagination={{ clickable: true }}
+  className="[&_.swiper-pagination-bullet]:w-[12px] [&_.swiper-pagination-bullet]:h-[12px] [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:bg-gray-300 [&_.swiper-pagination-bullet-active]:!bg-[#DB4444] [&_.swiper-pagination-bullet]:border-2 [&_.swiper-pagination-bullet]:border-white"
+  >
+ <SwiperSlide>
+  <div className="flex items-center justify-center bg-black h-[344px]">
+  <div className="p-15 w-1/2">
+<div className="flex items-center text-white mb-4 ">
+  <i className="fa-brands fa-apple text-2xl mr-5"></i>
+  <span className="text-[16px] leading-[24px]">iPhone 14 Series</span>
+</div>
+    <h2 className="font-semibold text-[48px] leading-[60px] mb-4 tracking-[4%] text-white">Up to 10% <br /> off Voucher</h2>
+    <NavLink to="/home" className="underline text-white">Shop Now <i className="fa-solid fa-arrow-right text-white"></i></NavLink>
+  </div>
+  <div className="w-1/2">
+    <img src={iPhone} alt="" className="w-full"/>
+  </div>
+  </div>
+ 
+ </SwiperSlide>
+   <SwiperSlide>
+  <div className="flex items-center justify-center bg-black h-[344px]">
+  <div className="p-15 w-1/2">
+<div className="flex items-center text-white mb-4 ">
+  <i className="fa-brands fa-apple text-2xl mr-5"></i>
+  <span className="text-[16px] leading-[24px]">iPhone 14 Series</span>
+</div>
+    <h2 className="font-semibold text-[48px] leading-[60px] mb-4 tracking-[4%] text-white">Up to 10% <br /> off Voucher</h2>
+    <NavLink to="/home" className="underline text-white">Shop Now <i className="fa-solid fa-arrow-right text-white"></i></NavLink>
+  </div>
+  <div className="w-1/2">
+    <img src={iPhone} alt="" className="w-full"/>
+  </div>
+  </div>
+ 
+ </SwiperSlide>  <SwiperSlide>
+  <div className="flex items-center justify-center bg-black h-[344px]">
+  <div className="p-15 w-1/2">
+<div className="flex items-center text-white mb-4 ">
+  <i className="fa-brands fa-apple text-2xl mr-5"></i>
+  <span className="text-[16px] leading-[24px]">iPhone 14 Series</span>
+</div>
+    <h2 className="font-semibold text-[48px] leading-[60px] mb-4 tracking-[4%] text-white">Up to 10% <br /> off Voucher</h2>
+    <NavLink to="/home" className="underline text-white">Shop Now <i className="fa-solid fa-arrow-right text-white"></i></NavLink>
+  </div>
+  <div className="w-1/2">
+    <img src={iPhone} alt="" className="w-full"/>
+  </div>
+  </div>
+ 
+ </SwiperSlide>
+</Swiper>
+        
+      </div>
+
+    </div>
+  </div>
   
   
-   <div className="w-[80%] mx-auto px-10 py-10 mt-40 mb-40 relative border-b-1">
+   <div className="w-[80%] mx-auto px-10 py-10 mt-20 mb-40 relative border-b-1">
     <span className="text-[#DB4444] text-[16px] font-bold  leading-[20px] mb-4 before:inline-block before:rounded-[4px] before:w-[20px] before:h-[40px] before:bg-[#DB4444] before:content-[''] before:mr-4 inline-flex items-center">Today's</span>
     <h2 className="font-semibold text-[24px] sm:text-[36px] leading-[48px] tracking-[4%] mb-14">Flash Sales</h2>
    <div className="mb-20">
@@ -125,7 +212,7 @@ function Home() {
    
 
 
-  <div className="w-[80%] mx-auto px-10 py-10 mt-40 mb-40 relative border-b-1">
+  <div className="w-[80%] mx-auto px-10 py-10 mt-20 mb-40 relative border-b-1">
     <span className="text-[#DB4444] text-[16px] font-bold  leading-[20px] mb-4 before:inline-block before:rounded-[4px] before:w-[20px] before:h-[40px] before:bg-[#DB4444] before:content-[''] before:mr-4 inline-flex items-center">Categories</span>
     <h2 className="font-semibold text-[24px] sm:text-[36px] leading-[48px] tracking-[4%] mb-14">Browse By Category</h2>
    <div className="mb-20">
@@ -172,9 +259,55 @@ function Home() {
    </div>
   </div>
    
+   <div className="w-[80%] mx-auto px-10 py-10 mt-20 mb-40 relative border-b-1">
+    <span className="text-[#DB4444] text-[16px] font-bold  leading-[20px] mb-4 before:inline-block before:rounded-[4px] before:w-[20px] before:h-[40px] before:bg-[#DB4444] before:content-[''] before:mr-4 inline-flex items-center">This Month</span>
+    <h2 className="font-semibold text-[24px] sm:text-[36px] leading-[48px] tracking-[4%] mb-14">Best Selling Products</h2>
+   <div className="mb-20">
+     <div className="flex gap-[30px]">
+     {bestSelling.map((product,idx)=>(
+       
+      
+     <div className='w-full sm:w-1/2 md:w-1/4' key={idx}> 
+         <div className="relative p-5 mt-10 bg-[#F5F5F5] w-[270px] flex flex-col gap-3 items-center">
+    <div className="w-[190px] h-[180px] mt-10 "><img src={product.image} alt="" className="w-full h-full" /></div>
+
+    <div className="absolute right-0 mr-2 top-[12px]">
+      <button className="bg-white w-[36px] h-[36px] rounded-full flex justify-center items-center mb-4"><i className="fa-regular fa-heart"></i></button>
+      <button className="bg-white w-[36px] h-[36px] rounded-full flex justify-center items-center"><i className="fa-regular fa-eye"></i></button>
+    </div>
+  </div>
+  <h4 className="font-medium text-[16px] leading-[24px] mt-4">{product.title}</h4>
+  <span className="text-[#DB4444] mr-4 font-bold inline-block mb-1">{product.nPrice}</span>
+  {product.oPrice?<span className="text-gray-400 line-through inline-block mb-1">{product.oPrice}</span>:""}
+  <div className="flex">
+    <div>
+    <i className="fa-solid fa-star mr-1 text-yellow-300"></i>
+    <i className="fa-solid fa-star mr-1 text-yellow-300"></i>
+    <i className="fa-solid fa-star mr-1 text-yellow-300"></i>
+    <i className="fa-solid fa-star mr-1 text-yellow-300"></i>
+    <i className="fa-solid fa-star mr-3 text-yellow-300"></i>
+  </div>
+   <p className="text-gray-400">{product.rate}</p>
+  </div>
+     </div>
+  
+
+     
+     ))}
+     </div>
+      
+   
+   </div>
+   <div className="absolute top-24 right-0 mr-10">
+     <button type="button" className="text-white inline-flex justify-center items-center bg-[#DB4444] text-center w-[159px] h-[56px] p-y-[16px] p-x-[48px]  border border-gray-300 focus:outline-none hover:bg-red-800 focus:ring-4 focus:ring-gray-100 font-medium  text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">View All</button>
+   </div>
+  
+ 
+
+  </div>
    
   
-  <div className="bg-black w-[80%] mx-auto flex justify-center items-center gap-20 mt-40 mb-40 p-20">
+  <div className="bg-black w-[80%] mx-auto flex justify-center items-center gap-20 mt-20 mb-40 p-20">
     <div className='w-[1/2]'>
       <span className="text-[#00FF66] text-[16px] font-semibold leading-[20px] mb-4">Categories</span>
       <h1 className="text-white text-[48px] leading-[60px] tracking-[4%] font-semibold mb-4">Enhance Your <br /> Music Experience</h1>
