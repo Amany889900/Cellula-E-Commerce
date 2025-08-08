@@ -7,6 +7,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { useRef } from "react";
+import joyStick from "./../../assets/Images/joyStick.png"
+import keyboard from "./../../assets/Images/keyboard.png"
+import monitor from "./../../assets/Images/monitor.png"
+import chair from "./../../assets/Images/chair.png"
 
 
 const categories = [
@@ -27,11 +31,100 @@ const categories = [
   {title:"Sports",icon:<i className="fa-solid fa-baseball-bat-ball"></i>},
 ]
 
+const sales=[
+  {image:joyStick,title:"HAVIT HV-G92 Gamepad",oPrice:"$224",nPrice:"$120",sale:"-40%",rate:"(88)"},
+  {image:keyboard,title:"AK-900 Wired Keyboard",oPrice:"$1160",nPrice:"$754",sale:"-35%",rate:"(75)"},
+  {image:monitor,title:"IPS LCD Gaming Monitor",oPrice:"$400",nPrice:"$280",sale:"-30%",rate:"(99)"},
+  {image:chair,title:"S-Series Comfort Chair",oPrice:"$400",nPrice:"$375",sale:"-30%",rate:"(99)"},
+  {image:chair,title:"S-Series Comfort Chair",oPrice:"$400",nPrice:"$375",sale:"-30%",rate:"(99)"},
+  {image:monitor,title:"IPS LCD Gaming Monitor",oPrice:"$400",nPrice:"$280",sale:"-30%",rate:"(99)"},
+  {image:keyboard,title:"AK-900 Wired Keyboard",oPrice:"$1160",nPrice:"$754",sale:"-35%",rate:"(75)"},
+  {image:joyStick,title:"HAVIT HV-G92 Gamepad",oPrice:"$224",nPrice:"$120",sale:"-40%",rate:"(88)"},
+]
+
 function Home() {
  const swiperRef = useRef(null); 
+ const swiperRef2 = useRef(null); 
   return (
 
   <>
+  
+  
+   <div className="w-[80%] mx-auto px-10 py-10 mt-40 mb-40 relative border-b-1">
+    <span className="text-[#DB4444] text-[16px] font-bold  leading-[20px] mb-4 before:inline-block before:rounded-[4px] before:w-[20px] before:h-[40px] before:bg-[#DB4444] before:content-[''] before:mr-4 inline-flex items-center">Today's</span>
+    <h2 className="font-semibold text-[24px] sm:text-[36px] leading-[48px] tracking-[4%] mb-14">Flash Sales</h2>
+   <div className="mb-20">
+    <Swiper
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      spaceBetween={30}
+      slidesPerView={1}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => (swiperRef2.current = swiper)}
+      breakpoints={{
+  
+  640: {
+    slidesPerView: 2,
+    spaceBetween: 20,
+  },
+  768: {
+    slidesPerView: 2,
+    spaceBetween: 20,
+  },
+  1024: {
+    slidesPerView: 3,
+    spaceBetween: 30,
+  },
+  1280: {
+    slidesPerView: 4,
+    spaceBetween: 40,
+  },
+}}
+    >
+     {sales.map((product,idx)=>(
+       <SwiperSlide key={idx}>
+       <div className="">
+    <div className="relative p-5 mt-10 bg-[#F5F5F5] w-[270px] flex flex-col gap-3 items-center">
+    <div className="w-[190px] h-[180px] mt-10 "><img src={product.image} alt="" className="w-full h-full" /></div>
+    <div className="w-[55px] h-[26px] p-y-[4px] p-x-[12px] text-white text-center bg-[#DB4444] absolute top-[12px] left-[12px] rounded-[4px]">{product.sale}</div>
+    <div className="absolute right-0 mr-2 top-[12px]">
+      <button className="bg-white w-[36px] h-[36px] rounded-full flex justify-center items-center mb-4"><i className="fa-regular fa-heart"></i></button>
+      <button className="bg-white w-[36px] h-[36px] rounded-full flex justify-center items-center"><i className="fa-regular fa-eye"></i></button>
+    </div>
+  </div>
+  <h4 className="font-medium text-[16px] leading-[24px] mt-4">{product.title}</h4>
+  <span className="text-[#DB4444] mr-4 font-bold inline-block mb-1">{product.nPrice}</span>
+  <span className="text-gray-400 line-through inline-block mb-1">{product.oPrice}</span>
+  <div className="flex">
+    <div>
+    <i className="fa-solid fa-star mr-1 text-yellow-300"></i>
+    <i className="fa-solid fa-star mr-1 text-yellow-300"></i>
+    <i className="fa-solid fa-star mr-1 text-yellow-300"></i>
+    <i className="fa-solid fa-star mr-1 text-yellow-300"></i>
+    <i className="fa-solid fa-star mr-3 text-yellow-300"></i>
+  </div>
+   <p className="text-gray-400">{product.rate}</p>
+  </div>
+  
+  </div>
+
+       </SwiperSlide>
+     ))}
+      
+    </Swiper>
+   </div>
+   <div className="absolute top-24 right-0 mr-10">
+     <button type="button"  onClick={() => swiperRef2.current?.slidePrev()}  className="text-gray-900 w-[50px] h-[50px] inline-flex justify-center items-center rounded-full bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium  text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"><i className="fa-solid fa-arrow-left"></i></button>
+     <button type="button"   onClick={() => swiperRef2.current?.slideNext()}  className="text-gray-900 w-[50px] h-[50px] inline-flex justify-center items-center rounded-full bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium  text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"><i className="fa-solid fa-arrow-right"></i></button>
+   </div>
+   <div className="flex justify-center">
+     <button className="text-white text-center bg-[#DB4444] hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  rounded-[4px] p-y-[16px] p-x-[48px] text-sm w-[234px] h-[56px]  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-block  mb-5">View All Products</button>
+   </div>
+ 
+
+  </div>
+   
+
+
   <div className="w-[80%] mx-auto px-10 py-10 mt-40 mb-40 relative border-b-1">
     <span className="text-[#DB4444] text-[16px] font-bold  leading-[20px] mb-4 before:inline-block before:rounded-[4px] before:w-[20px] before:h-[40px] before:bg-[#DB4444] before:content-[''] before:mr-4 inline-flex items-center">Categories</span>
     <h2 className="font-semibold text-[24px] sm:text-[36px] leading-[48px] tracking-[4%] mb-14">Browse By Category</h2>
