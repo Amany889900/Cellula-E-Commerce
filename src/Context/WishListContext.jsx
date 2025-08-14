@@ -13,7 +13,7 @@ const WishListContextProvider = ({children})=>{
     }else{
         setWishProducts([])
     }
-  },[wishProducts]);
+  },[]);
 
 
    async function addToWishlist(productId){

@@ -15,6 +15,7 @@ import CategoryDetails from './Components/CategoryDetails/CategoryDetails';
 import ProductsContextProvider from './Context/ProductsContext';
 import ProductDetails from './ProductDetails/ProductDetails';
 import WishListContextProvider, { WishListContext } from './Context/WishListContext';
+import EditProfile from './Components/EditProfile/EditProfile';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       {path:"/about",element:<About/>},
       {path:"/categoryDetails/:categoryName",element:<CategoryDetails/>},
       {path:"/productDetails/:id",element:<ProductDetails/>},
+      {path:"/editProfile",element:<EditProfile/>},
       {path:"*",element:<Error/>},
     ]
     }
