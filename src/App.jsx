@@ -14,6 +14,7 @@ import About from './Components/About/About';
 import CategoryDetails from './Components/CategoryDetails/CategoryDetails';
 import ProductsContextProvider from './Context/ProductsContext';
 import ProductDetails from './ProductDetails/ProductDetails';
+import WishListContextProvider, { WishListContext } from './Context/WishListContext';
 
 
 function App() {
@@ -34,7 +35,9 @@ function App() {
   return (
     <>
     <ProductsContextProvider>
+      <WishListContextProvider>
       <RouterProvider router={router} />
+      </WishListContextProvider>
     </ProductsContextProvider>
     </>
   )

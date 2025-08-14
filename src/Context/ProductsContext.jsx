@@ -6,6 +6,7 @@ export const ProductsContext = createContext();
 const ProductsContextProvider = ({children})=>{
 
     const [products,setProducts] = useState([]);
+    const [filteredByCategoryProducts,setFilteredByCategoryProducts] = useState([]);
 
 
    async function getAllProducts (){
@@ -24,14 +25,12 @@ const ProductsContextProvider = ({children})=>{
           const data = products?.filter((ele)=>{
              return ele[field].toLowerCase() == val.toLowerCase()
         })
-        return data;
+      setFilteredByCategoryProducts(data);
        }catch(err){
         console.log(err,"Error from filterProducts function in ProductsContext")
          
        }
    }
-
-  
 
 
     return(
@@ -40,7 +39,9 @@ const ProductsContextProvider = ({children})=>{
               getAllProducts,
               products,
               setProducts,
-              filterProducts
+              filterProducts,
+              filteredByCategoryProducts,
+              setFilteredByCategoryProducts
             }
         }>
             {children}
