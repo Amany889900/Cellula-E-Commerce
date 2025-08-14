@@ -17,17 +17,19 @@ import cpuCooler from "./../../assets/Images/cpuCooler.png"
 import bookShelf from "./../../assets/Images/bookShelf.png"
 import iPhone from "./../../assets/Images/iPhone.png"
 import { dateValue } from './../../../node_modules/flowbite-datepicker/js/lib/date';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
 const categories = [
-  {title:"Phones",icon:<i className="fa-solid fa-mobile-screen-button"></i>},
+  {title:"Electronics",icon:<i className="fa-solid fa-mobile-screen-button"></i>},
+  {title:"Jewelery",icon:<i class="fa-solid fa-gem"></i>},
+  {title:"Men's Clothing",icon:<i className="fa-solid fa-shirt"></i>},
+  {title:"Women's Clothing",icon:<i class="fa-solid fa-person-dress"></i>},
   {title:"Computers",icon:<i className="fa-solid fa-desktop"></i>},
   {title:"Smart Watches",icon:<i className="fa-solid fa-clock"></i>},
   {title:"Camera",icon:<i className="fa-solid fa-camera"></i>},
   {title:"Head Phones",icon:<i className="fa-solid fa-headphones"></i>},
   {title:"Gaming",icon:<i className="fa-solid fa-gamepad"></i>},
-  {title:"Clothes",icon:<i className="fa-solid fa-shirt"></i>},
   {title:"Coffee Essentials",icon:<i className="fa-solid fa-mug-hot"></i>},
   {title:"Shoes",icon:<i className="fa-solid fa-shoe-prints"></i>},
   {title:"Bikes",icon:<i className="fa-solid fa-bicycle"></i>},
@@ -245,8 +247,10 @@ function Home() {
      {categories.map((cat,idx)=>(
        <SwiperSlide key={idx}>
         <div className="text-center border-1 py-10 rounded-[4px] flex flex-col justify-center items-center gap-4 hover:text-[white] hover:bg-[#DB4444] transition duration-300 ease-in-out">
+          <Link to={`/categoryDetails/${cat.title}`}>
           <div className="text-2xl">{cat.icon}</div>
           <div>{cat.title}</div>
+          </Link>
         </div>
        </SwiperSlide>
      ))}

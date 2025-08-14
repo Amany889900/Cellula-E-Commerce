@@ -11,6 +11,9 @@ import {createHashRouter, RouterProvider } from 'react-router-dom'
 import Home from './Components/Home/Home';
 import Contact from './Components/Contact/Contact';
 import About from './Components/About/About';
+import CategoryDetails from './Components/CategoryDetails/CategoryDetails';
+import ProductsContextProvider from './Context/ProductsContext';
+import ProductDetails from './ProductDetails/ProductDetails';
 
 
 function App() {
@@ -22,13 +25,17 @@ function App() {
       {path:"/home",element:<Home/>},
       {path:"/contact",element:<Contact/>},
       {path:"/about",element:<About/>},
+      {path:"/categoryDetails/:categoryName",element:<CategoryDetails/>},
+      {path:"/productDetails/:id",element:<ProductDetails/>},
       {path:"*",element:<Error/>},
     ]
     }
    ])
   return (
     <>
+    <ProductsContextProvider>
       <RouterProvider router={router} />
+    </ProductsContextProvider>
     </>
   )
 }
