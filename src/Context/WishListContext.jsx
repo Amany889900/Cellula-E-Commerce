@@ -8,7 +8,7 @@ const WishListContextProvider = ({children})=>{
     const [wishProducts,setWishProducts] = useState([]);
 
     useEffect(function(){
-    if(localStorage.getItem("wishProducts")!=null){
+    if(localStorage.getItem("wishProducts")!=null && Array.isArray(localStorage.getItem("wishProducts")) ){
         setWishProducts(JSON.parse(localStorage.getItem("wishProducts")));
     }else{
         setWishProducts([])
@@ -19,14 +19,15 @@ const WishListContextProvider = ({children})=>{
    async function addToWishlist(productId){
           try{
             const {data} = await axios.get(`https://fakestoreapi.com/products/${productId}`);
+            console.log(data);
             if(localStorage.getItem("wishProducts")!=null){
               const currentArr = JSON.parse(localStorage.getItem("wishProducts"));
               const wishArr = [...currentArr,data];
               localStorage.setItem("wishProducts",JSON.stringify(wishArr));
               setWishProducts(wishArr);
             }else{
-              localStorage.setItem("wishProducts",JSON.stringify([data]));
-              setWishProducts([data]);
+              localStorage.setItem("wishProducts",JSON.stringify(data));
+              setWishProducts(data);
             }
             console.log("added..!!",localStorage.getItem("wishProducts"));
           }catch(err){
