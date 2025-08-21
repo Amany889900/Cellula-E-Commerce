@@ -18,6 +18,7 @@ import WishListContextProvider, { WishListContext } from './Context/WishListCont
 import EditProfile from './Components/EditProfile/EditProfile';
 import Wishlist from './Components/Wishlist/Wishlist';
 import Checkout from './Components/Checkout/Checkout';
+import Cart from './Components/Cart/Cart';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
       {path:"/editProfile",element:<EditProfile/>},
       {path:"/wishlist",element:<Wishlist/>},
       {path:"/checkout",element:<Checkout/>},
+      {path:"/cart",element:<Cart/>},
       {path:"*",element:<Error/>},
     ]
     }
