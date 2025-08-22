@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+const savedTotal = JSON.parse(localStorage.getItem("total")) || 0;
 
 const initialState = {
-    cartItems:[],
+    cartItems:savedCart,
     totalQuantity:0,
-    totalPrice:0
+    totalPrice:savedTotal
 }
 
 export const cartSlice = createSlice({
@@ -13,16 +15,16 @@ export const cartSlice = createSlice({
         addToCart:(state,action)=>{
             const product = action.payload;
 
-            const existingProduct = cartItems.find((elem)=>elem.id == product.id);
+            const existingProduct = state.cartItems.find((elem)=>elem.id == product.id);
 
             if(existingProduct){
-                state.quantity+=1
+                existingProduct.quantity+=1
             }else{
-                cartItems.push({...product,quantity:1})
+                state.cartItems.push({...product,quantity:1})
             }
 
              state.totalQuantity += 1;
-             state.totalAmount += product.price;
+             state.totalPrice += product.price;
 
         },
         removeFromCart:(state,action)=>{
@@ -31,7 +33,7 @@ export const cartSlice = createSlice({
             if(product){
                state.totalQuantity-=product.quantity;
                state.totalPrice-= product.price * product.quantity;
-               state.cartItems = state.cartItems.filter((elem)=>{elem.id!=productId});
+               state.cartItems = state.cartItems.filter((elem)=>(elem.id!=productId));
             }
         },
         incrementQnty:(state,action)=>{
@@ -55,7 +57,7 @@ export const cartSlice = createSlice({
         clearCart: (state) => {
       state.cartItems = [];
       state.totalQuantity = 0;
-      state.totalAmount = 0;
+      state.totalPrice = 0;
     },
     }
 })

@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {ProductsContext} from '../../Context/ProductsContext';
 import { WishListContext } from '../../Context/WishListContext';
+import { addToCart } from '../../Store/Slices/CartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 function CategoryDetails() {
 const {categoryName} = useParams();
@@ -29,6 +31,8 @@ function toggleWishList (productId){
   else addToWishlist(productId)
 }
 
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const dispatch = useDispatch()
   return (
     <>
     <div className="w-[80%] mx-auto px-10 py-10 mt-20 mb-40 relative border-b-1">
@@ -40,8 +44,13 @@ function toggleWishList (productId){
      {filteredByCategoryProducts?.map((product,idx)=>(
         <div className='w-full sm:w-1/2 md:w-1/4' key={idx}> 
          <Link to={`/productDetails/${product.id}`}>
-           <div className="relative p-5 mt-10 bg-[#F5F5F5] w-[270px] flex flex-col gap-3 items-center">
-                    
+           <div className="relative p-5 mt-10 bg-[#F5F5F5] w-[270px] group flex flex-col gap-3 items-center">
+              <button onClick={ (e)=>{
+                  e.preventDefault();
+                  dispatch(addToCart(product));
+                  console.log(cartItems)
+              }
+              } className="absolute cursor-pointer invisible group-hover:visible duration-300 ease-in-out bottom-0 left-0 h-[20%] w-full bg-gray-700 text-white">Add to cart</button>
     <div className="w-[190px] h-[180px] mt-10 "><img src={product.image} alt="" className="w-full h-full" /></div>
 
     <div className="absolute right-0 mr-2 top-[12px]">

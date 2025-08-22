@@ -1,6 +1,7 @@
 import React from 'react'
 import InputField from '../InputField/InputField'
 import joyStick from "./../../assets/Images/joyStick.png"
+import { useSelector } from 'react-redux';
 
 
 function Checkout() {
@@ -13,6 +14,9 @@ function Checkout() {
         {for:"phone",id:"phone",isRequired:true,type:"tel",label:"Phone Number"},
         {for:"email",id:"email",isRequired:true,type:"email",label:"Email Address"},
     ]
+
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
+
   return (
    <>
     <div className='w-[80%] mx-auto flex lg:flex-row lg:justify-between mt-60 mb-60 flex-col items-center'>
@@ -38,7 +42,7 @@ function Checkout() {
         </div>
         <div className="border-b-2 mb-10 flex py-5 justify-between">
             <span >Subtotal:</span>
-            <span >$1750</span>
+            <span >${totalPrice.toFixed(2)}</span>
         </div>
         <div className="border-b-2 mb-10 flex py-5 justify-between">
             <span >Shipping:</span>
@@ -46,7 +50,7 @@ function Checkout() {
         </div>
         <div className="flex justify-between">
             <span >Total:</span>
-            <span >$1750</span>
+            <span >${totalPrice.toFixed(2)}</span>
         </div>
         <fieldset className="mt-15">
   <legend class="sr-only">Payment method</legend>

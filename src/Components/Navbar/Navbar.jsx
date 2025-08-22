@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom'
+import { WishListContext } from '../../Context/WishListContext';
+import { useLocation } from 'react-router-dom';
 
 
 
 function Navbar() {
+   const cartItems = useSelector((state) => state.cart.cartItems);
+   const {wishProducts} = useContext(WishListContext);
+   let location = useLocation();
   return (
 <>
 <div className='fixed top-0 z-20 w-full left-0'>
+
   <div className="flex flex-col items-center justify-between text-white bg-black px-36 py-2 sm:flex-row">
   {/* Centered block */}
   <div className="flex-1 text-center">
@@ -33,7 +40,7 @@ function Navbar() {
       </svg>
       <span className="sr-only">Search</span>
     </button>
-    <div className="relative hidden md:block">
+    <div className="relative hidden md:block mr-20">
       <div className="absolute inset-y-0 end-0 flex items-center pe-3 pointer-events-none">
         <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
@@ -58,6 +65,16 @@ function Navbar() {
         </div>
         <input type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..."/>
       </div>
+       {(location.pathname == "/login" || location.pathname == "/signup")?"":<div className="absolute right-0 mr-6"> 
+      <span className="relative"><Link to="/wishlist"><i class="fa-solid fa-heart mr-10 text-2xl"></i></Link>
+       <span class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 end-6 dark:border-gray-900">{wishProducts?wishProducts.length:0}</span>
+      </span>
+       <span className="relative"><Link to="/cart"><i class="fa-solid fa-cart-shopping mr-10 text-2xl"></i></Link>
+       <span class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 end-6 dark:border-gray-900">{cartItems?cartItems.length:0}</span>
+      </span>
+      <Link to="/editProfile"><i class="fa-solid fa-user text-2xl"></i></Link>
+      </div> }
+     
       <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <li>
           <NavLink to="/home" className={({ isActive }) => isActive ? 'relative after:block after:w-full after:border-b-1 after:content-[""] after:pt-1 block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' : 'block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'} aria-current="page">Home</NavLink>
