@@ -22,7 +22,9 @@ const WishListContextProvider = ({children})=>{
             console.log(data);
             if(localStorage.getItem("wishProducts")!=null){
               const currentArr = JSON.parse(localStorage.getItem("wishProducts"));
-              const wishArr = [...currentArr,data];
+              let wishArr=[];
+              if(currentArr.length>0) wishArr = [...currentArr,data];
+              else wishArr.push(data);
               localStorage.setItem("wishProducts",JSON.stringify(wishArr));
               setWishProducts(wishArr);
             }else{
